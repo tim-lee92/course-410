@@ -87,3 +87,11 @@ SELECT ROUND(long_w, 4) FROM station WHERE lat_n <= 137.2345 ORDER BY lat_n DESC
 SELECT ROUND(MIN(lat_n), 4) FROM station WHERE lat_n >= 38.7780;
 
 SELECT ROUND(long_w, 4) FROM station WHERE lat_n >= 38.7780 ORDER_BY lat_n ASC LIMIT 1;
+
+SELECT ROUND(
+  ABS(MIN(lat_n) - MAX(lat_n)) + ABS(MIN(long_w) - MAX(long_w)),
+  4) FROM station;
+
+SELECT ROUND(
+  POWER(POWER(MIN(lat_n) - MAX(lat_n), 2) + POWER(MIN(long_w) - MAX(long_w), 2), 0.5), 4
+) FROM station;
