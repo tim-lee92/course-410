@@ -60,14 +60,20 @@ GROUP BY hackers.name, hackers.hacker_id
 HAVING COUNT(submissions.hacker_id) > 1
 ORDER BY COUNT(submissions.hacker_id) DESC, hackers.hacker_id ASC;
 
-SELECT wands.id, wands_property.age, wands.coins_needed, wands.power
-FROM wands
-JOIN wands_property ON wands.code = wands_property.code
-WHERE wands_property.is_evil = 0
-GROUP BY wands_property.age, wands.power
-ORDER BY wands.power DESC, wands_property.age DESC;
+SELECT COUNT(id) FROM CITY WHERE population > 100000;
 
-SELECT wands.id, wands_property.age, wands.coins_needed, wands.power
-FROM wands
-JOIN wands_property ON wands.code = wands_property.code
-WHERE wands_property.is_evil = 0 and wands.coins_needed =
+SELECT SUM(population) FROM CITY WHERE district = 'California';
+
+SELECT AVG(population) FROM CITY WHERE district IS 'California';
+
+SELECT FLOOR(AVG(population)) FROM CITY;
+
+SELECT SUM(population) FROM CITY where COUNTRYCODE = 'JPN';
+
+SELECT MAX(population) - MIN(population) FROM CITY;
+
+SELECT CEIL(AVG(salary) - AVG(REPLACE(salary, '0', ''))) FROM EMPLOYEES;
+
+SELECT (salary * months) AS total_earnings, COUNT(*) FROM employee GROUP BY total_earnings ORDER BY total_earnings DESC limit 1;
+
+SELECT ROUND(SUM(lat_n), 2), ROUND(SUM(long_w), 2) FROM station;
