@@ -77,3 +77,13 @@ SELECT CEIL(AVG(salary) - AVG(REPLACE(salary, '0', ''))) FROM EMPLOYEES;
 SELECT (salary * months) AS total_earnings, COUNT(*) FROM employee GROUP BY total_earnings ORDER BY total_earnings DESC limit 1;
 
 SELECT ROUND(SUM(lat_n), 2), ROUND(SUM(long_w), 2) FROM station;
+
+SELECT ROUND(SUM(lat_n), 4) FROM station WHERE lat_n BETWEEN 38.7880 AND 137.2345;
+
+SELECT ROUND(MAX(lat_n), 4) FROM station WHERE lat_n <= 137.2345;
+
+SELECT ROUND(long_w, 4) FROM station WHERE lat_n <= 137.2345 ORDER BY lat_n DESC LIMIT 1;
+
+SELECT ROUND(MIN(lat_n), 4) FROM station WHERE lat_n >= 38.7780;
+
+SELECT ROUND(long_w, 4) FROM station WHERE lat_n >= 38.7780 ORDER_BY lat_n ASC LIMIT 1;
