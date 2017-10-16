@@ -6,7 +6,7 @@ def dfs_clone_graph(graph)
   dfs(graph, hash)
 end
 
-def def(graph, hash)
+def dfs(graph, hash)
   if hash[graph]
     hash.get(graph)
   end
