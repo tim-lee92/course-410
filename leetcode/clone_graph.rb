@@ -19,3 +19,33 @@ def dfs(graph, hash)
     graph_copy.neighbors.push(dfs(neighbor, hash))
   end
 end
+
+# BFS
+def bfs_clone_graph(graph)
+  return nil if graph.nil?
+
+  map = {}
+
+  queue = []
+
+  queue.push(graph)
+
+  graph_copy = UndirectedGraphNode.new(graph.label)
+  map[graph] = graph_copy
+
+  while queue.length > 0
+    node = queue.shift
+    node.neighbors.each do |neighbor|
+      if map[neighbor]
+        map[node].neighbors.push(map[neighbor])
+      else
+        neighbor_copy = UndirectedGraphNode.new(neighbor.label)
+        map[node].neighbors.push(neighbor_copy)
+        map[neighbor] = neighbor_copy
+        queue.push(neighbor)
+      end
+    end
+  end
+
+  graph_copy
+end
