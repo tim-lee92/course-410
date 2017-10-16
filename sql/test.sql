@@ -98,4 +98,8 @@ SELECT ROUND(
 
 SELECT name, population, area
   FROM world
- WHERE population >= 25000000 OR area >= 3000000
+ WHERE population >= 25000000 OR area >= 3000000;
+
+SELECT person.FirstName, person.astname, address.city, address.state
+FROM person
+LEFT JOIN address ON person.personid = address.personid;
