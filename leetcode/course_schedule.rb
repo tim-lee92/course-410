@@ -1,6 +1,6 @@
 def can_finish(num_courses, prereqs)
   graph = []
-  degree = Array.new()
+  degree = []
   queue = []
   count = 0
 
@@ -9,10 +9,16 @@ def can_finish(num_courses, prereqs)
     degree[i] = 0
   end
 
+  p "Graph #{graph}"
+  p "Degree #{degree}"
+
   prereqs.length.times do |i|
     degree[prereqs[i][1]] += 1
     graph[prereqs[i][0]].push(prereqs[i][1])
   end
+
+  p "Graph #{graph}"
+  p "Degree #{degree}"
 
   degree.length.times do |i|
     if degree[i] == 0
@@ -34,9 +40,13 @@ def can_finish(num_courses, prereqs)
     end
   end
 
-  if count == numCourses
+  p degree
+
+  if count == num_courses
     true
   else
     false
   end
 end
+
+p can_finish(2, [[0,1]])

@@ -103,3 +103,8 @@ SELECT name, population, area
 SELECT person.FirstName, person.astname, address.city, address.state
 FROM person
 LEFT JOIN address ON person.personid = address.personid;
+
+SELECT email
+FROM person
+GROUP BY email
+HAVING COUNT(email) > 1;
