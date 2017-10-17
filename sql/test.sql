@@ -108,3 +108,5 @@ SELECT email
 FROM person
 GROUP BY email
 HAVING COUNT(email) > 1;
+
+SELECT * FROM cinema WHERE description NOT 'boring' AND MOD(id, 2) = 1
