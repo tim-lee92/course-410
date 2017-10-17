@@ -109,4 +109,12 @@ FROM person
 GROUP BY email
 HAVING COUNT(email) > 1;
 
-SELECT * FROM cinema WHERE description NOT 'boring' AND MOD(id, 2) = 1
+SELECT * FROM cinema WHERE description NOT LIKE "boring" AND MOD(id, 2) = 1 ORDER BY rating;
+
+SELECT MAX(salary) FROM employee AS SecondHighestSalary WHERE salary < (SELECT MAX(salary) FROM employee);
+
+SELECT e1.name AS Employee
+FROM employee e1
+JOIN employee e2
+ON e1.managerid = e2.id
+WHERE e1.salary > e2.salary;
