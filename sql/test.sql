@@ -118,3 +118,16 @@ FROM employee e1
 JOIN employee e2
 ON e1.managerid = e2.id
 WHERE e1.salary > e2.salary;
+
+SELECT class FROM courses GROUP BY class HAVING COUNT(DISTINCT student) >= 5;
+
+SELECT customers.name AS Customers
+FROM customers
+LEFT JOIN orders
+ON orders.customerid = customers.id
+WHERE orders.id IS NULL;
+
+DELETE FROM person
+WHERE email = (
+  SELECT email FROM person GROUP BY email HAVING COUNT(DISTINCT id) > 1
+)
