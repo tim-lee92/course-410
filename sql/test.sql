@@ -131,3 +131,7 @@ DELETE FROM person
 WHERE email = (
   SELECT email FROM person GROUP BY email HAVING COUNT(DISTINCT id) > 1
 )
+
+SELECT w1.id AS Id
+FROM weather w1, weather w2
+WHERE w1.temperature > w2.temperature AND TO_DAYS(w1.date)-TO_DAYS(w2.date) = 1
